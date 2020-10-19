@@ -1,0 +1,7 @@
+Sends and receives to a channel are blocking by default.  What does this mean? 
+
+When a data is sent to a channel, the control is blocked in the send statement until some other Goroutine reads from that channel. 
+
+Similarly when data is read from a channel, the read is blocked until some Goroutine writes data to that channel.
+
+This property of channels is what helps Goroutines communicate effectively without the use of explicit locks or conditional variables that are quite common in other programming languages.
