@@ -1,0 +1,31 @@
+package main
+
+/*
+The capacity, in number of elements, sets the size of the buffer in the channel.
+If the capacity is zero or absent, the channel is unbuffered
+and communication succeeds only when both a sender and receiver are ready.
+
+Otherwise, the channel is buffered and communication succeeds without blocking
+if the buffer is not full (sends) or not empty (receives).
+
+A nil channel is never ready for communication.
+*/
+
+import (
+	"fmt"
+)
+
+func main() {
+	// create inline read channel using buffer capacity 2
+	// one for each read event
+	channelread := make(chan int, 2)
+
+	channelread <- 3
+	v := <-channelread // read event 1
+
+	fmt.Println(v)
+	// or
+
+	channelread <- 33
+	fmt.Println(<-channelread) // read event 2
+}

@@ -1,0 +1,41 @@
+package main
+
+import "fmt"
+
+func mainComposition() {
+	// inheritance / composition
+	mySSN := ssn{}
+	mySSN.value = 222
+	myPerson := person{"nick", mySSN}
+	myPerson.display()
+
+	// return pointer from function
+	fmt.Println(*display2())
+
+	// return function (pointer)
+	f := *display2()
+	fmt.Println(f)
+
+}
+
+func (p person) display() {
+	fmt.Println(p.name)
+	fmt.Println(p.ssn.value)
+}
+
+func display2() *personone {
+	mySSN1 := ssnone{}
+	mySSN1.value = 333
+	myPerson1 := personone{"nickolas", mySSN1}
+
+	return &myPerson1
+}
+
+type ssn struct {
+	value int
+}
+
+type person struct {
+	name string
+	ssn
+}

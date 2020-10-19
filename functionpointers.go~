@@ -1,0 +1,29 @@
+package main
+
+import "fmt"
+
+func mainFunctionPointers() {
+	// return pointer from function
+	fmt.Println(*display())
+
+	// return function (pointer)
+	f := *display()
+	fmt.Println(f)
+}
+
+func display() *personone {
+	mySSN1 := ssnone{}
+	mySSN1.value = 333
+	myPerson1 := personone{"nickolas", mySSN1}
+
+	return &myPerson1
+}
+
+type ssnone struct {
+	value int
+}
+
+type personone struct {
+	name string
+	ssnone
+}

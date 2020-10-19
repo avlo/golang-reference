@@ -1,0 +1,28 @@
+package main
+
+// ***********************
+// DONT FOGET YOU HAVE A WORKING WRITE FILE
+// ************************
+
+import (
+	"fmt"
+	"sync"
+)
+
+var wg sync.WaitGroup
+
+func readFromChannelWithReturnVal(channel <-chan int) int {
+	defer wg.Done() 
+	var returnval int
+	returnval = <-channel
+	return returnval
+}
+
+func main() {
+	channelread := make(chan int)
+
+	// below doens't make sense since requiring return value is not asynch
+	aptr := readFromChannelWiReturnVal(channelread)
+	fmt.Println(*aptr)
+
+}
