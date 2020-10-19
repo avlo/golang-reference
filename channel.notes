@@ -1,3 +1,6 @@
+from: https://golangbot.com/channels/
+
+BLOCKING
 Sends and receives to a channel are blocking by default.  What does this mean? 
 
 When a data is sent to a channel, the control is blocked in the send statement until some other Goroutine reads from that channel. 
@@ -7,6 +10,7 @@ Similarly when data is read from a channel, the read is blocked until some Gorou
 This property of channels is what helps Goroutines communicate effectively without the use of explicit locks or conditional variables that are quite common in other programming languages.
 
 
+DEADLOCK 
 One important factor to consider while using channels is deadlock. 
 
 If a Goroutine is sending data on a channel, then it is expected that some other Goroutine should be receiving the data. If this does not happen, then the program will panic at runtime with Deadlock.
