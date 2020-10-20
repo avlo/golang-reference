@@ -1,0 +1,38 @@
+// channel-assign-buffered-multiple-times-legit.go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func main() {
+	started := time.Now()
+	foods := []string{"pizza", "pasta", "kebap"}
+	var wg sync.WaitGroup
+	wg.Add(len(foods))
+
+	// buffered channnels
+	// 1. you declare the size (greater than zero)
+	// 2. sender will block until there is receiver ready on teh other side of channel AND the channel is full
+
+	ch := make(chan string, 1) // buffered channel
+	ch <- "hello" // deadlocks - there is no toehr goroutine receiving
+
+	for _, f := range foods {
+		go func(f string) {
+			cook(f)
+			wg.Done()
+		}(f)
+	}
+	wg.Wait()
+	fmt.Printf("done in %v\n", time.Since(started))
+}
+
+func cook(food string) {
+	fmt.Printf("cooking %s...\n", food)
+	time.Sleep(2 * time.Second)
+	fmt.Printf("done cooking %s\n", food)
+
+}

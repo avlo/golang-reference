@@ -1,0 +1,40 @@
+// channel-semaphore-throttling.go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func main() {
+	started := time.Now()
+	foods := []string{"pizza", "pasta", "kebap"}
+	var wg sync.WaitGroup
+	wg.Add(len(foods))
+
+	// semaphore
+	// high number of operations
+	// require throttling/rating limit # of concurrent workers
+
+	sem := make(chan struct{}, 3) // channel as semaphore, empty struct takes little space
+
+	for _, f := range foods {
+		go func(f string) {
+			fmt.Printf("%s waiting to start...\n", f)
+			sem <- struct{}{}
+			cook(f)
+			wg.Done()
+			<-sem
+		}(f)
+	}
+	wg.Wait()
+	fmt.Printf("done in %v\n", time.Since(started))
+}
+
+func cook(food string) {
+	fmt.Printf("cooking %s...\n", food)
+	time.Sleep(2 * time.Second)
+	fmt.Printf("done cooking %s\n\n", food)
+
+}
