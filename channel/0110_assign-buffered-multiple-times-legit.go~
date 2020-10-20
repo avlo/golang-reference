@@ -15,7 +15,8 @@ func main() {
 
 	// buffered channnels
 	// 1. you declare the size (greater than zero)
-	// 2. sender will block until there is receiver ready on teh other side of channel AND the channel is full
+	// 2. sender will block until there is receiver ready
+  //    on the other side of channel AND the channel is full
 
 	ch := make(chan string, 1) // buffered channel
 	ch <- "hello" // deadlocks - there is no toehr goroutine receiving

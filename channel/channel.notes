@@ -24,3 +24,17 @@ Similarly if a Goroutine is waiting to receive data from a channel, then some ot
 another great reference: 
   https://guzalexander.com/2013/12/06/golang-channels-tutorial.html
   https://go101.org/article/channel-use-cases.html
+
+~~~~~
+experiment with:
+	channels inside main w/o goroutines
+	gorouteins w/o channels
+
+	unbuffered channel in main w/o goroutines
+	buffered channel in main w/o goroutines
+
+	unbuffered channel w goroutines
+	buffered channel w goroutines
+
+	semaphore
+
