@@ -20,11 +20,12 @@ func writeToChannel(ch chan<- int, value int) {
 }
 
 func main() {
-	channelwrite := make(chan int) // read and write channel
-	var a int = 111
+	channelwrite := make(chan int, 3) // read and write channel
 
-	go writeToChannel(channelwrite, a)
-	cval := <-channelwrite // read from channel
+	go writeToChannel(channelwrite, 111)
+	go writeToChannel(channelwrite, 222)
+	go writeToChannel(channelwrite, 333)
+	a, b, c := <-channelwrite, <-channelwrite, <-channelwrite // read from channel
 
-	fmt.Println(cval)
+	fmt.Println(a, b, c)
 }

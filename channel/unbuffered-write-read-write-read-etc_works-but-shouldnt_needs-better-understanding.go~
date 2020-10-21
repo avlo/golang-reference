@@ -1,0 +1,33 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func funct(cha chan int, i int) {
+	fmt.Println("Func1 sending data")
+	time.Sleep(time.Second * 4)
+	cha <- i
+	fmt.Println("Func1 ends sending data")
+}
+
+func main() {
+	ch := make(chan int)
+
+	go funct(ch, 1)
+
+	fmt.Println("Main sleeps 2 seconds")
+	// time.Sleep(time.Second * 2)
+
+	go funct(ch, 2)
+	go funct(ch, 3)
+	go funct(ch, 4)
+
+	fmt.Println("Main begins receiving data")
+	d, e, f, g := <-ch, <-ch, <-ch, <-ch
+	fmt.Println("Main received data:", d, e, f, g)
+
+	// time.Sleep(time.Second)
+	fmt.Println("end")
+}
