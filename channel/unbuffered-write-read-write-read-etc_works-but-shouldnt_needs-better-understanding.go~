@@ -1,5 +1,12 @@
 package main
 
+/*
+the reason this doesn't deadlock is because each channel write occurs in an invocation
+of go funct()... so in other words, each write occurs in it's own thread.
+
+but why doesn't that pose a problem?  feels like it shoudl also deadlock.
+*/
+
 import (
 	"fmt"
 	"time"
@@ -26,7 +33,7 @@ func main() {
 
 	fmt.Println("Main begins receiving data")
 	d, e, f, g := <-ch, <-ch, <-ch, <-ch
-	fmt.Println("Main received data:", d, e, f, g)
+	fmt.Printf("Main received data: %v, %v, %v, %v\n", d, e, f, g)
 
 	// time.Sleep(time.Second)
 	fmt.Println("end")
