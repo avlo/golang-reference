@@ -20,12 +20,16 @@ func main() {
 	// one for each read event
 	channelread := make(chan int, 2)
 
-	channelread <- 3
-	v := <-channelread // read event 1
-
+	channelread <- 3   // write event, take 1 spot in channel
+	v := <-channelread // read event 1, reduce 1 spot in channel
 	fmt.Println(v)
-	// or
 
-	channelread <- 33
-	fmt.Println(<-channelread) // read event 2
+	// or without declaring a variable
+	channelread <- 33          // write event 2, occupy 1 spot in channel
+	fmt.Println(<-channelread) // read event 2, reduce 1 spot in channel
+
+	// if channelsize+1 read events occur w/o a write, we'll deadlock
+	// channelread <- 44
+	// channelread <- 55
+	// channelread <- 66
 }
