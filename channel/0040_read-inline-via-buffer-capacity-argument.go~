@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	// create inline read channel using buffer capacity 2
+	// create uni channel using buffer capacity 2
 	// one for each read event
 	channelread := make(chan int, 2)
 
@@ -28,7 +28,7 @@ func main() {
 	channelread <- 33          // write event 2, occupy 1 spot in channel
 	fmt.Println(<-channelread) // read event 2, reduce 1 spot in channel
 
-	// if channelsize+1 read events occur w/o a write, we'll deadlock
+	// if channelsize+1 write events occur w/o a read, we'll deadlock
 	// channelread <- 44
 	// channelread <- 55
 	// channelread <- 66
