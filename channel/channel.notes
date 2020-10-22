@@ -1,5 +1,14 @@
 from: https://golangbot.com/channels/
 
+CRITICAL POITNS: 
+	- reading/writing UNBUFFERED channel in SAME thread WILL cause deadlock.
+	- reading/writing UNBUFFERED channel in EXTERNAL thread WILLNOT cause deadlock (but main() may finish before external threads are done)
+	- reading/writing BUFFERED channel in SAME thread WILLNOT cause deadlock
+
+	it seems like UNBUFFERED channels SHOULD be used with external goroutines, confirm this
+
+waitGroup used to prevent main thread from existing while other threads still exist
+
 buffered channels are (also called) synchronous
 
 BLOCKING
@@ -28,7 +37,7 @@ another great reference:
 ~~~~~
 experiment with:
 	channels inside main w/o goroutines
-	gorouteins w/o channels
+	goroutines w/o channels
 
 	unbuffered channel in main w/o goroutines
 	buffered channel in main w/o goroutines

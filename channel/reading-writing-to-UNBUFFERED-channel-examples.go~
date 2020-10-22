@@ -1,0 +1,36 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+/******************
+- reading/writing UNBUFFERED channel in SAME thread WILL cause deadlock.
+
+func main() {
+	ch := make(chan int)
+	ch <- 1
+	fmt.Println(<-ch)
+}
+******************/
+
+/******************
+- reading/writing UNBUFFERED channel in EXTERNAL thread WILLNOT cause deadlock
+ (but main() may finish before external threads are done, unless blocked (line 33)
+*/
+func thread(c chan int, v int) {
+	fmt.Println("in thread: job will take 5 seconds")
+	time.Sleep(time.Second * 5) // delay to demonstrate block at line 33
+	fmt.Println("in thread: job complete")
+	c <- v
+}
+
+func main() {
+	ch := make(chan int)
+	fmt.Println("in main: call thread")
+	go thread(ch, 1)
+	fmt.Println("in main: block until channel read")
+	// fmt.Println("in main: ", <-ch)
+	fmt.Println("in main: unblock")
+}
