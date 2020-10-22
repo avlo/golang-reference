@@ -31,6 +31,6 @@ func main() {
 	fmt.Println("in main: call thread")
 	go thread(ch, 1)
 	fmt.Println("in main: block until channel read")
-	// fmt.Println("in main: ", <-ch)
+	fmt.Println("in main: ", <-ch)
 	fmt.Println("in main: unblock")
 }
