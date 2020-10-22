@@ -1,0 +1,100 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+  var x = 100
+  fmt.Printf("var x = 100\n")
+  fmt.Printf(" x: %d\n", x)
+  fmt.Printf("&x: %v\n\n", &x)
+
+  var p *int = &x
+  fmt.Printf("var p *int = &x\n")
+  fmt.Printf("*p: %d\n", *p)
+  fmt.Printf(" p: %v\n\n", p)
+
+  fmt.Printf(" x: %d\n", x)
+  fmt.Printf("&x: %v\n\n", &x)
+
+  fmt.Printf("-----\nupdate p\n\n")
+
+  *p = 200
+  fmt.Printf("*p = 200\n")
+  fmt.Printf("*p: %d\n", *p)
+  fmt.Printf(" p: %v\n\n", p)
+
+  fmt.Printf(" x: %d\n", x)
+  fmt.Printf("&x: %v\n\n", &x)
+
+  p = &x  
+  fmt.Printf(" p = &x\n")
+  fmt.Printf("&p: %v\n", &p)
+  fmt.Printf("*p: %d\n\n", *p)
+
+  *p = 300
+  fmt.Printf("*p = 300\n")
+  fmt.Printf("&p: %v\n", &p)
+  fmt.Printf("*p: %d\n\n", *p)
+
+  fmt.Printf(" x: %d\n", x)
+  fmt.Printf("&x: %v\n", &x)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var x = 100
+ x: 100
+&x: 0xc0000bc020
+
+var p *int = &x
+*p: 100
+ p: 0xc0000bc020
+
+ x: 100
+&x: 0xc0000bc020
+
+-----
+update p
+
+*p = 200
+*p: 200
+ p: 0xc0000bc020
+
+ x: 200
+&x: 0xc0000bc020
+
+ p = &x
+&p: 0xc0000be020
+*p: 200
+
+*p = 300
+&p: 0xc0000be020
+*p: 300
+
+ x: 300
+&x: 0xc0000bc020
