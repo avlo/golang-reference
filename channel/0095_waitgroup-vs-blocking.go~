@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+)
+
+// var wg = sync.WaitGroup{}
+
+func main() {
+	ch := make(chan int)
+	// wg.Add(6)
+
+	go func(ch chan<- int) {
+		for i := 1; i <= 3; i++ {
+			// defer wg.Done()
+			ch <- 23
+		}
+	}(ch)
+
+	for i := 1; i <= 3; i++ {
+		// below read is blocking, so all 3 threads above *must complete first
+		fmt.Println(<-ch)
+		// wg.Done()
+	}
+
+	// time.Sleep(time.Second)
+	// wg.Wait()
+}

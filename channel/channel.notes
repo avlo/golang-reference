@@ -1,22 +1,22 @@
 from: https://golangbot.com/channels/
 
+buffered channels are (also called) synchronous
+
+operation of writing to the channel blocks the execution of the whole program because writing operations on a synchronous channel can only succeed in case there is a receiver (thread) ready to get this data.
+
 CRITICAL POITNS: 
 	- reading/writing UNBUFFERED channel in SAME thread WILL cause deadlock.
 	- reading/writing UNBUFFERED channel in EXTERNAL thread WILLNOT cause deadlock (but main() may finish before external threads are done)
 	- reading/writing BUFFERED channel in SAME thread WILLNOT cause deadlock
 
-	it seems like UNBUFFERED channels SHOULD be used with external goroutines, confirm this
-
 waitGroup used to prevent main thread from existing while other threads still exist
-
-buffered channels are (also called) synchronous
 
 BLOCKING
 Sends and receives to a channel are blocking by default.  What does this mean? 
 
-When a data is sent to a channel, the control is blocked in the send statement until some other Goroutine reads from that channel. 
+When a data is sent to a channel, the control is blocked in the send statement until some other Goroutine is available to read from that channel. 
 
-Similarly when data is read from a channel, the read is blocked until some Goroutine writes data to that channel.
+Similarly when data is read from a channel, the read is blocked until some Goroutine is available to write to that channel.
 
 This property of channels is what helps Goroutines communicate effectively without the use of explicit locks or conditional variables that are quite common in other programming languages.
 
