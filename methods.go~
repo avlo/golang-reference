@@ -1,0 +1,20 @@
+package main
+
+import (
+	"fmt"
+)
+
+func (m myType) meth() {
+	m.m = "one"
+	fmt.Println(m)
+}
+
+type myType struct {
+	m string
+}
+ 
+func main() {
+	m := myType{}
+	m.meth()
+}
+
