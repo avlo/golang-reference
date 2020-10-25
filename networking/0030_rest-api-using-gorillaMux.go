@@ -11,6 +11,7 @@ import (
 
 // Article comment
 type Article struct {
+	ID      string `json:"id"`
 	Title   string `json:"title"`
 	Desc    string `json:"desc"`
 	Content string `json:"content"`
@@ -30,7 +31,8 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 func handleRequests() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", homePage)
-	router.HandleFunc("/articles", returnAllArticles)
+	router.HandleFunc("/all", returnAllArticles)
+	router.HandleFunc("/article/{id}", returnSingleArticle)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
@@ -39,10 +41,21 @@ func returnAllArticles(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Articles)
 }
 
+func returnSingleArticle(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	key := vars["id"]
+
+	for _, article := range Articles {
+		if article.ID == key {
+			json.NewEncoder(w).Encode(article)
+		}
+	}
+}
+
 func main() {
 	Articles = []Article{
-		Article{Title: "Hello", Desc: "Article Description", Content: "Article Content"},
-		Article{Title: "Hello 2", Desc: "Article Description", Content: "Article Content"},
+		Article{ID: "1", Title: "Hello", Desc: "Article Description", Content: "Article Content"},
+		Article{ID: "2", Title: "Hello 2", Desc: "Article Description", Content: "Article Content"},
 	}
 	handleRequests()
 }
