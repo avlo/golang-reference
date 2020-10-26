@@ -46,6 +46,7 @@ func returnSingleArticle(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	key := vars["id"]
 
+	w.Header().Set("Content-Type", "application/json")
 	for _, article := range Articles {
 		if article.ID == key {
 			json.NewEncoder(w).Encode(article)

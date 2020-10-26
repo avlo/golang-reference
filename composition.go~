@@ -2,20 +2,13 @@ package main
 
 import "fmt"
 
-func mainComposition() {
-	// inheritance / composition
-	mySSN := ssn{}
-	mySSN.value = 222
-	myPerson := person{"nick", mySSN}
-	myPerson.display()
+type ssn struct {
+	value int
+}
 
-	// return pointer from function
-	fmt.Println(*display2())
-
-	// return function (pointer)
-	f := *display2()
-	fmt.Println(f)
-
+type person struct {
+	name string
+	ssn
 }
 
 func (p person) display() {
@@ -31,11 +24,16 @@ func display2() *personone {
 	return &myPerson1
 }
 
-type ssn struct {
-	value int
-}
+func main() {
+	// inheritance / composition
+	mySSN := ssn{}
+	mySSN.value = 222
+	myPerson := person{"nick", mySSN}
+	myPerson.display()
 
-type person struct {
-	name string
-	ssn
-}
+	// return pointer from function
+	fmt.Println(*display2())
+
+	// return function (pointer)
+	f := *display2()
+	fmt.Println(f)
