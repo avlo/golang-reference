@@ -16,9 +16,10 @@ func sendRequest(url string) {
 	defer wg.Done()
 	res, err := http.Get(url)
 	if err != nil {
-		panic(err)
+		fmt.Printf("[%s] %s\n", err.Error(), url)
+	} else {
+		fmt.Printf("[%d] %s\n", res.StatusCode, url)
 	}
-	fmt.Printf("[%d] %s\n", res.StatusCode, url)
 }
 
 func main() {

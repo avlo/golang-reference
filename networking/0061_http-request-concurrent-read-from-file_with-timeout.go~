@@ -1,0 +1,62 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"time"
+)
+
+// var wg sync.WaitGroup
+
+func sendRequest(url string, ch chan struct{}) {
+	// defer wg.Done()
+	res, err := http.Get(url)
+	if err == nil {
+		fmt.Printf("[%d] %s\n", res.StatusCode, url)
+		ch <- struct{}{}
+	} else {
+		fmt.Printf("[%s] %s\n", err.Error(), url)
+		ch <- struct{}{}
+	}
+}
+
+func main() {
+	start := time.Now()
+
+	ch := make(chan struct{})
+	for _, url := range readFile() {
+		go sendRequest("https://"+url, ch)
+		// wg.Add(1)
+		select {
+		case <-ch:
+		case <-time.After(3 * time.Second):
+			fmt.Println("Timeout!")
+		}
+	}
+
+	// wg.Wait()
+	fmt.Printf("\n%s\n", time.Since(start))
+}
+
+func readFile() []string {
+	readFile, err := os.Open("0060_urls.txt")
+	if err != nil {
+		log.Fatalf("failed to open file: %s", err)
+	}
+
+	fileScanner := bufio.NewScanner(readFile)
+	fileScanner.Split(bufio.ScanLines)
+	var fileTextLines []string
+
+	for fileScanner.Scan() {
+		fileTextLines = append(fileTextLines, fileScanner.Text())
+	}
+	readFile.Close()
+	return fileTextLines
+}
+
+// 10.77
+// 1.67
