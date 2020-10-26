@@ -1,0 +1,10 @@
+google.com
+github.com
+yahoo.com
+bing.com
+amazon.com
+reddit.com
+democracy.earth
+microsoft.com
+digitalocean.com
+ebay.com

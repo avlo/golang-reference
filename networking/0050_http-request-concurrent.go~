@@ -1,0 +1,38 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"sync"
+	"time"
+)
+
+var wg sync.WaitGroup
+
+func sendRequest(url string) {
+	defer wg.Done()
+	res, err := http.Get(url)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("[%d] %s\n", res.StatusCode, url)
+}
+
+func main() {
+	start := time.Now()
+	urls := []string{"google.com", "github.com", "yahoo.com", "bing.com", "amazon.com",
+		"reddit.com", "democracy.earth", "microsoft.com", "digitalocean.com", "ebay.com"}
+
+	for _, url := range urls {
+		go sendRequest("https://" + url)
+		// sendRequest("https://" + url)
+		wg.Add(1)
+	}
+
+	wg.Wait()
+	fmt.Printf("\n%s\n", time.Since(start))
+}
+
+// 9.08
+
+// 1.67
