@@ -24,7 +24,7 @@ func sendRequest(url string) {
 func main() {
 	start := time.Now()
 
-	readFile, err := os.Open("0050_urls.txt")
+	readFile, err := os.Open("0060_urls.txt")
 	if err != nil {
 		log.Fatalf("failed to open file: %s", err)
 	}
