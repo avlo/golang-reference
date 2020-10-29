@@ -6,7 +6,10 @@ import (
 )
 
 func setupRoutes(app *fiber.App) {
-	app.Get("/books", book.GetBooks)
+	app.Get("/book", book.GetBooks)
+	app.Get("/book/:id", book.GetBook)
+	app.Post("/book/", book.NewBook)
+	app.Delete("/book/:id", book.DeleteBook)
 }
 
 func main() {

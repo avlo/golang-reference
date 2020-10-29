@@ -7,13 +7,13 @@ func GetBooks(c *fiber.Ctx) error {
 }
 
 func GetBook(c *fiber.Ctx) error {
-	return c.SendString("Single books")
+	return c.SendString("Single book")
 }
 
 func NewBook(c *fiber.Ctx) error {
 	return c.SendString("New book")
 }
 
-func DeleteBooks(c *fiber.Ctx) error {
-	return c.SendString("Delete books")
+func DeleteBook(c *fiber.Ctx) error {
+	return c.SendString("Delete book")
 }
