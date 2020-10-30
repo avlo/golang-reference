@@ -1,8 +1,7 @@
 package database
 
 import (
-	//	"gorm.io/driver/sqlite"
-	"gorm.io/gorm"
+	"github.com/jinzhu/gorm"
 )
 
 var (
