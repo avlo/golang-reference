@@ -23,8 +23,8 @@ type UpdateTaskInput struct {
 	// Deadline   string `json:"deadline`
 }
 
-// GET /tasks
-// Get all tasks
+//****************
+//***** GET ALL /tasks
 func FindTasks(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	var tasks []models.Task
@@ -33,8 +33,8 @@ func FindTasks(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": tasks})
 }
 
-// POST /tasks
-// Create new task
+//****************
+//***** POST /tasks
 func CreateTask(c *gin.Context) {
 	// Validate input
 	var input CreateTaskInput
@@ -56,8 +56,8 @@ func CreateTask(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": task})
 }
 
-// GET /tasks/:id
-// Find a task
+//****************
+//***** GET /tasks/:id
 func FindTask(c *gin.Context) { // Get model if exist
 	var task models.Task
 
@@ -70,8 +70,8 @@ func FindTask(c *gin.Context) { // Get model if exist
 	c.JSON(http.StatusOK, gin.H{"data": task})
 }
 
-// PATCH /tasks/:id
-// Update a task
+//****************
+//***** UPDATE /tasks/:id
 func UpdateTask(c *gin.Context) {
 
 	db := c.MustGet("db").(*gorm.DB)
@@ -102,8 +102,8 @@ func UpdateTask(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": task})
 }
 
-// DELETE /tasks/:id
-// Delete a task
+//****************
+//***** DELETE /tasks/:id
 func DeleteTask(c *gin.Context) {
 	// Get model if exist
 	db := c.MustGet("db").(*gorm.DB)
