@@ -5,6 +5,23 @@ https://github.com/iotaledger/wasp/blob/develop/packages/vm/examples/donatewithf
 https://github.com/iotaledger/wasp/blob/master/articles/intro/dwf.md
 
 ~~~~
+import variations
+	- aliased import
+	  import f "fmt" 
+		  "f" can be used in place of fmt, ex:
+				f.Println("stuff")
+  - dot import
+    import . "fmt" 
+			allows function all without package name, ex:
+				Println("stuff")
+	- blank import
+		import _ "fmt"
+			allows for ignoring unused imports
+  - nested import
+		import "math/rand"
+			import subpackage of larger package			
+
+~~~~
 
 arrays and maps are always passed by value
 	but only array setting a variable equals copies, while maps internally use pointers
