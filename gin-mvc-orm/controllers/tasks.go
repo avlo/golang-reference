@@ -4,9 +4,9 @@ package controllers
 
 import (
 	// "bookc/models"
-	"bookCRUD/models"
 	"net/http"
 
+	"github.com/avlo/golang-reference/gin-mvc-orm/models"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 )

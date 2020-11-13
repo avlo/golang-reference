@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"bookCRUD/controllers"
+	"github.com/avlo/golang-reference/gin-mvc-orm/controllers"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
