@@ -1,0 +1,37 @@
+////////////////////////////////////////////////
+// Read your "hello-world" message on the Tangle
+////////////////////////////////////////////////
+
+package main
+
+import (
+	"fmt"
+
+	"github.com/iotaledger/iota.go/api"
+	"github.com/iotaledger/iota.go/transaction"
+	"github.com/iotaledger/iota.go/trinary"
+)
+
+var node = "https://nodes.devnet.iota.org"
+
+// Define the tail transaction hash of the bundle whose messages you want to read
+const tailTransactionHash = trinary.Trytes("FQPZPJFVHAWANYQFAOZZBUTGVEJUSTISQPWMVNGIY9TJOIBRRGBETBQ9JHDQWXMBQVXQWE9VBVCMOY999")
+
+func main() {
+	apiRet, err := api.ComposeAPI(api.HTTPClientSettings{URI: node})
+	must(err)
+
+	// Get the transactions in your bundle
+	bundle, err := apiRet.GetBundle(tailTransactionHash)
+	must(err)
+
+	jsonMsg, err := transaction.ExtractJSON(bundle)
+	must(err)
+	fmt.Println(jsonMsg)
+}
+
+func must(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
