@@ -14,10 +14,11 @@ import (
 
 var node = "https://nodes.devnet.iota.org"
 
-// Define the tail transaction hash of the bundle whose messages you want to read
+// use console output (tail transaction hash) from 001_hello-world_write-to-tangle.go
 const tailTransactionHash = trinary.Trytes("FQPZPJFVHAWANYQFAOZZBUTGVEJUSTISQPWMVNGIY9TJOIBRRGBETBQ9JHDQWXMBQVXQWE9VBVCMOY999")
 
 func main() {
+	// api settings req'd for connecting to a network
 	apiRet, err := api.ComposeAPI(api.HTTPClientSettings{URI: node})
 	must(err)
 
