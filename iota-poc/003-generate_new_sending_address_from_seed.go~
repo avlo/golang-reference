@@ -13,8 +13,22 @@ import (
 
 var node = "https://nodes.devnet.iota.org"
 
-// The seed that will be used to generate an address
-const seed = trinary.Trytes("PUETPSEITFEVEWCWBTSIZM9NKRGJEIMXTULBACGFRQK9IMGICLBKW9TTEVSDQMGWKBXPVCBMMCXWMNPDX")
+// The seed that will be used to generate a (receiving) address
+const seed = trinary.Trytes("ZMWOEGE9PVYCOANUWDXLLQKKCQBREVPEIDXFBBYDHTHRRRVY9TTKQEBHQDOQHCCHCFDVOGZNIZMQIOKCF")
+
+//////////////////////
+// output address:
+// WSCDUBJZWHOYT9ZUGJVLJZPSOGDGBMZYWSTIBTFUFKAYXYGZCMGDTVFNUURSRHCSGJEBKWJGVXQNY9CXXSDURBMFZX
+//
+// devnet faucet
+// https://faucet.devnet.iota.org/
+//
+// "Your allocation request has been successfully processed
+//  d414221b-6c90-4b69-82ac-603447bb01de
+//
+// devnet explorer
+// https://explorer.iota.org/devnet/address/WSCDUBJZWHOYT9ZUGJVLJZPSOGDGBMZYWSTIBTFUFKAYXYGZCMGDTVFNUURSRHCSGJEBKWJGVXQNY9CXXSDURBMFZX
+//////////////////////
 
 // Define the security level of the address
 const securityLevel = 2
