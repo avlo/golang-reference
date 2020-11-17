@@ -13,6 +13,8 @@ import (
 
 var node = "https://nodes.devnet.iota.org"
 
+// head /dev/urandom |tr -dc A-Z9|head -c${1:-81}
+// generates 81digit number
 // The seed that will be used to generate a (receiving) address
 const seed = trinary.Trytes("ZMWOEGE9PVYCOANUWDXLLQKKCQBREVPEIDXFBBYDHTHRRRVY9TTKQEBHQDOQHCCHCFDVOGZNIZMQIOKCG")
 
