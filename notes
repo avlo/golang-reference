@@ -1,3 +1,9 @@
+goshimmer - node software allowing nodes to reach consensus without coordinator
+wasp - 2nd layer node software atop which run smart contracts
+pollen - testnet
+
+~~~
+
 go-lang
 https://play.golang.org/
 
