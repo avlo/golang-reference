@@ -9,7 +9,8 @@ import (
 	"github.com/iotaledger/iota.go/trinary"
 )
 
-var network = "https://nodes.devnet.iota.org"
+//var network = "https://127.0.0.1"
+var network = "http://0.0.0.0:14265"
 
 // define depth and minimum weight (tangle properties)
 const depth = 3
