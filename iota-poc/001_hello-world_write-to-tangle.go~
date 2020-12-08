@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/iotaledger/iota.go/api"
 	"github.com/iotaledger/iota.go/bundle"
 	"github.com/iotaledger/iota.go/encoding/ascii"
 	"github.com/iotaledger/iota.go/trinary"
 )
-
-var network = "https://nodes.devnet.iota.org"
 
 // define depth and minimum weight (tangle properties)
 const depth = 3
@@ -23,12 +22,15 @@ const seed = trinary.Trytes("JBN9ZRCOH9YRUGSWIQNZWAIFEZUBDUGTFPVRKXWPAUCEQQFS9NH
 
 func main() {
 
+	network := os.Args[1]
+	mess := os.Args[2]
+
 	// api settings req'd for connecting to a network
 	apiRet, err := api.ComposeAPI(api.HTTPClientSettings{URI: network})
 	must(err)
 
 	// creat JSON formatted message (will be easier to read message in exercise part 2)
-	var data = "{'message' : 'Hello nicks world'}"
+	var data = "{'message' : '" + mess + "'}"
 	// converted to trytes
 	message, err := ascii.EncodeToTrytes(data)
 	must(err)
