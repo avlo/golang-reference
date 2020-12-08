@@ -6,20 +6,19 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/iotaledger/iota.go/api"
 	"github.com/iotaledger/iota.go/transaction"
 	"github.com/iotaledger/iota.go/trinary"
 )
 
-var node = "https://nodes.devnet.iota.org"
-
-// use console output (tail transaction hash) from 001_hello-world_write-to-tangle.go
-const tailTransactionHash = trinary.Trytes("FQPZPJFVHAWANYQFAOZZBUTGVEJUSTISQPWMVNGIY9TJOIBRRGBETBQ9JHDQWXMBQVXQWE9VBVCMOY999")
-
 func main() {
+	network := os.Args[1]
+	tailTransactionHash := trinary.Trytes(os.Args[2])
+
 	// api settings req'd for connecting to a network
-	apiRet, err := api.ComposeAPI(api.HTTPClientSettings{URI: node})
+	apiRet, err := api.ComposeAPI(api.HTTPClientSettings{URI: network})
 	must(err)
 
 	// Get the transactions in your bundle
