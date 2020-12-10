@@ -6,13 +6,12 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/iotaledger/iota.go/api"
 	"github.com/iotaledger/iota.go/bundle"
 	"github.com/iotaledger/iota.go/trinary"
 )
-
-const node = "https://nodes.devnet.iota.org"
 
 // Replace this seed with the one that owns the address you used to get free test tokens
 const seed = trinary.Trytes("SIEGWQTEKSXYKGBVKSFTNVJEQZHSUZTJFOZYSEVFPAKTQLPAMGLTUKFNYLYKPDNSH9NXIJJS9BWQDOMY9")
@@ -22,7 +21,7 @@ const depth = 3
 
 func main() {
 	// Connect to a node
-	apiRef, err := api.ComposeAPI(api.HTTPClientSettings{URI: node})
+	apiRef, err := api.ComposeAPI(api.HTTPClientSettings{URI: os.Args[1]})
 	must(err)
 
 	// Define an address to which to send IOTA tokens
