@@ -16,11 +16,15 @@ var node = "https://nodes.devnet.iota.org"
 // head /dev/urandom |tr -dc A-Z9|head -c${1:-81}
 // generates 81digit number
 // The seed that will be used to generate a (receiving) address
-const seed = trinary.Trytes("SIEGWQTEKSXYKGBVKSFTNVJEQZHSUZTJFOZYSEVFPAKTQLPAMGLTUKFNYLYKPDNSH9NXIJJS9BWQDOMY9")
+// hand-modify last digit as 9 (trinary 0) to work w/ coordinator
+const seed = trinary.Trytes("ZMWOEGE9PVYCOANUWDXLLQKKCQBREVPEIDXFBBYDHTHRRRVY9TTKQEBHQDOQHCCHCFDVOGZNIZMQIOKC9")
 
 //////////////////////
 // output address:
-// OBNDXYGNNXDCDMIQQPVQJJVEWMRKCQCHBFWKXCGYBWBBESMABITKGIGIOWFHEVGNR9JKZSKSTHYLCILKANIANCHIRC
+// WSCDUBJZWHOYT9ZUGJVLJZPSOGDGBMZYWSTIBTFUFKAYXYGZCMGDTVFNUURSRHCSGJEBKWJGVXQNY9CXXSDURBMFZX
+//
+// output address second time (HD wallet):
+// QFTCZOUAKWG9RPROYFGZDHDYBHGJMD99YWPVLKZIETAKEVIBHZWIOHEIPJNVNZRIFVXSHFQSSEORTLJGWLKJRZWNLA
 //
 // devnet faucet
 // https://faucet.devnet.iota.org/
@@ -29,7 +33,8 @@ const seed = trinary.Trytes("SIEGWQTEKSXYKGBVKSFTNVJEQZHSUZTJFOZYSEVFPAKTQLPAMGL
 //  d414221b-6c90-4b69-82ac-603447bb01de
 //
 // devnet explorer
-// https://explorer.iota.org/devnet/address/OBNDXYGNNXDCDMIQQPVQJJVEWMRKCQCHBFWKXCGYBWBBESMABITKGIGIOWFHEVGNR9JKZSKSTHYLCILKANIANCHIRC
+// https://explorer.iota.org/devnet/address/QONGRFGHUJPEDSPLOIIORBWEBHPXYLYWWJAISUYJCNYGJNMYPAWJHEMICVLGQ9WPDFEWQRSBNAIORQNRWGULLONPYA
+//
 //////////////////////
 
 // Define the security level of the address

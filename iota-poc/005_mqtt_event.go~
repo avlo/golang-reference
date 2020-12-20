@@ -6,6 +6,7 @@ import (
 	"time"
 
 	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/iotaledger/iota.go/trinary"
 )
 
 var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Message) {
@@ -28,12 +29,14 @@ const depth = 3
 
 var wg sync.WaitGroup
 
+var topic string = "go-mqtt/sample"
+
 func main() {
 	var broker = "localhost"
 	var port = 1883
 	opts := mqtt.NewClientOptions()
-	opts.AddBroker(fmt.Sprintf("tcp://%s:%d", broker, port))
-	// opts.SetClientID("go_mqtt_client")
+	opts.AddBroker(fmt.Sprintf("mqtt://%s:%d", broker, port))
+	opts.SetClientID("005_mqtt_event")
 	// opts.SetUsername("emqx")
 	// opts.SetPassword("public")
 	opts.SetDefaultPublishHandler(messagePubHandler)
@@ -45,16 +48,16 @@ func main() {
 	}
 
 	wg.Add(1)
-	go sub(client)
-	// publish(client)
+	// go sub(client)
+	go publish(client)
 	wg.Wait()
 }
 
 func publish(client mqtt.Client) {
-	num := 10
+	num := 1000
 	for i := 0; i < num; i++ {
 		text := fmt.Sprintf("Message %d", i)
-		token := client.Publish("test", 0, false, text)
+		token := client.Publish(topic, 0, false, text)
 		token.Wait()
 		time.Sleep(time.Second)
 	}
@@ -62,7 +65,6 @@ func publish(client mqtt.Client) {
 
 func sub(client mqtt.Client) {
 	// defer wg.Done()
-	topic := "test"
 	token := client.Subscribe(topic, 1, nil)
 
 	token.Wait()
