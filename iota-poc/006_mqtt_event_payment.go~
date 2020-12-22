@@ -25,7 +25,7 @@ var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err
 }
 
 // Replace this seed with the one that owns the address you used to get free test tokens
-const seed = trinary.Trytes("SIEGWQTEKSXYKGBVKSFTNVJEQZHSUZTJFOZYSEVFPAKTQLPAMGLTUKFNYLYKPDNSH9NXIJJS9BWQDOMY9")
+const seed = trinary.Trytes("SIEGWQTEKSXYKGBVKSFTNVJEQZHSUZTJFOZYSEVFPAKTQLPAMGLTUKFNYLYKPDNSH9NXIJJS9BWQDOZZ9")
 
 // Define an address to which to send IOTA tokens
 const address = trinary.Trytes("L9TXCAXAXMPJDUJJRKKDQEUBNGFDMQHLEAENJYRVBVSBXOZKJLMOAX9RNVGTLDIZOJWORFLGNGKUAXS9BMFVYHRUTD")

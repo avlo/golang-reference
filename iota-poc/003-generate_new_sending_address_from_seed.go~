@@ -11,26 +11,17 @@ import (
 	"github.com/iotaledger/iota.go/trinary"
 )
 
-var node = "https://nodes.devnet.iota.org"
+var node = "http://localhost:14265"
 
 // head /dev/urandom |tr -dc A-Z9|head -c${1:-81}
 // generates 81digit number
-// The seed that will be used to generate a (receiving) address
+// The seed that will be used to generate a (sending) address
 // hand-modify last digit as 9 (trinary 0) to work w/ coordinator
-const seed = trinary.Trytes("ZMWOEGE9PVYCOANUWDXLLQKKCQBREVPEIDXFBBYDHTHRRRVY9TTKQEBHQDOQHCCHCFDVOGZNIZMQIOKC9")
+const seed = trinary.Trytes("SIEGWQTEKSXYKGBVKSFTNVJEQZHSUZTJFOZYSEVFPAKTQLPAMGLTUKFNYLYKPDNSH9NXIJJS9BWQDOZZ9")
 
 //////////////////////
-// output address:
-// WSCDUBJZWHOYT9ZUGJVLJZPSOGDGBMZYWSTIBTFUFKAYXYGZCMGDTVFNUURSRHCSGJEBKWJGVXQNY9CXXSDURBMFZX
-//
-// output address second time (HD wallet):
-// QFTCZOUAKWG9RPROYFGZDHDYBHGJMD99YWPVLKZIETAKEVIBHZWIOHEIPJNVNZRIFVXSHFQSSEORTLJGWLKJRZWNLA
-//
 // devnet faucet
 // https://faucet.devnet.iota.org/
-//
-// "Your allocation request has been successfully processed
-//  d414221b-6c90-4b69-82ac-603447bb01de
 //
 // devnet explorer
 // https://explorer.iota.org/devnet/address/QONGRFGHUJPEDSPLOIIORBWEBHPXYLYWWJAISUYJCNYGJNMYPAWJHEMICVLGQ9WPDFEWQRSBNAIORQNRWGULLONPYA
