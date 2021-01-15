@@ -36,6 +36,14 @@ slices are passed by reference
 
 ~~~~
 
+install all packages in the current directory and its subdirectories
+  go install ./...
+
+test all packages in the current directory and its subdirectories
+  go test ./...
+
+~~~~
+
 pointer basics
 
 var x = 100
