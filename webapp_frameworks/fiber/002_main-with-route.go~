@@ -1,0 +1,19 @@
+package main
+
+import "github.com/gofiber/fiber"
+
+func helloWorld(context *fiber.Ctx) error {
+	return context.SendString("Hello, World!")
+}
+
+func setupRoutes(app *fiber.App) {
+	// how does helloWorld take no parameter but the method signature requires it?
+	// perhaps that's part of the fiber framework?
+	app.Get("/", helloWorld)
+}
+
+func main() {
+	app := fiber.New()
+	setupRoutes(app)
+	app.Listen(":3000")
+}

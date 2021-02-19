@@ -1,0 +1,1 @@
+./gohornet -c config_devnet // *** do not include .json extension, aka config_devnet.json

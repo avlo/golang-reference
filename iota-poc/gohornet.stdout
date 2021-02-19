@@ -1,0 +1,238 @@
+HORNET 0.5.6-c9ec091
+nick@sputnik:~/git/gohornet~(develop)$ ./hornet 
+Parameters loaded: 
+ {
+  "coordinator": {
+    "address": "UDYXTZBE9GZGPM9SSQV9LTZNDLJIZMPUVVXYXFYVBLIEUHLSEWFTKZZLXYRHHWVQV9MNNX9KZC9D9UZWZ",
+    "checkpoints": {
+      "maxtrackedtransactions": 10000
+    },
+    "intervalseconds": 10,
+    "merkletreedepth": 24,
+    "merkletreefilepath": "coordinator.tree",
+    "milestonemerkletreehashfunc": "BLAKE2b-512",
+    "mwm": 14,
+    "securitylevel": 2,
+    "statefilepath": "coordinator.state",
+    "tipsel": {
+      "heaviestbranchselectiondeadlinemilliseconds": 100,
+      "maxheaviestbranchtipspercheckpoint": 10,
+      "minheaviestbranchunconfirmedtransactionsthreshold": 20,
+      "randomtipspercheckpoint": 3
+    }
+  },
+  "dashboard": {
+    "basicauth": {
+      "enabled": false,
+      "username": ""
+    },
+    "bindaddress": "localhost:8081",
+    "dev": false,
+    "theme": "default"
+  },
+  "db": {
+    "debug": false,
+    "path": "mainnetdb"
+  },
+  "httpapi": {
+    "basicauth": {
+      "enabled": false,
+      "username": ""
+    },
+    "bindaddress": "0.0.0.0:14265",
+    "excludehealthcheckfromauth": false,
+    "limits": {
+      "bodylengthbytes": 1000000,
+      "findtransactions": 1000,
+      "gettrytes": 1000,
+      "requestslist": 1000
+    },
+    "permitremoteaccess": [
+      "getNodeInfo",
+      "getBalances",
+      "checkConsistency",
+      "getTipInfo",
+      "getTransactionsToApprove",
+      "getInclusionStates",
+      "getNodeAPIConfiguration",
+      "wereAddressesSpentFrom",
+      "broadcastTransactions",
+      "findTransactions",
+      "storeTransactions",
+      "getTrytes"
+    ],
+    "permittedroutes": [
+      "healthz"
+    ],
+    "whitelistedaddresses": []
+  },
+  "logger": {
+    "disablecaller": true,
+    "encoding": "console",
+    "level": "info",
+    "outputpaths": [
+      "stdout"
+    ]
+  },
+  "mqtt": {
+    "config": "mqtt_config.json"
+  },
+  "network": {
+    "autopeering": {
+      "bindaddress": "0.0.0.0:14626",
+      "entrynodes": [
+        "FvfwJuCMoWJvcJLSYww7whPxouZ9WFJ55uyxTxKxJ1ez@enter.hornet.zone:14626",
+        "EkSLZ4uvSTED1x6KaGzqxoGxjbytt2rPVfbJk1LRLCGL@enter.manapotion.io:18626",
+        "iotaMk9Rg8wWo1DDeG7fwV9iJ41hvkwFX8w6MyTQgDu@enter.thetangle.org:14627",
+        "12w9FrzMdDQ42aBgFrv1siHuJMhuZ4SMVHRFSS7Zb72W@entrynode.iotatoken.nl:14626",
+        "DboTc1v61Xdyvggj8VRszy92ScUTLgfwZaHvXsU8zr7e@entrynode.einfachiota.de:14626",
+        "31Tz9meznQMm7qSDUgyMmYVeHUCGA7za5Suvbom5hpE9@bender.iota.autopeering.com:14626"
+      ],
+      "inboundpeers": 2,
+      "maxdroppedpacketspercentage": 0,
+      "outboundpeers": 2,
+      "runasentrynode": false,
+      "saltlifetime": 30,
+      "seed": ""
+    },
+    "gossip": {
+      "bindaddress": "0.0.0.0:15600",
+      "reconnectattemptintervalseconds": 60
+    },
+    "preferipv6": false
+  },
+  "node": {
+    "alias": "",
+    "disableplugins": [],
+    "enableplugins": [],
+    "showaliasingetnodeinfo": false
+  },
+  "peerslist": [],
+  "profiling": {
+    "bindaddress": "localhost:6060"
+  },
+  "prometheus": {
+    "bindaddress": "localhost:9311",
+    "fileservicediscovery": {
+      "enabled": false,
+      "path": "target.json",
+      "target": "localhost:9311"
+    },
+    "gometrics": false,
+    "processmetrics": false,
+    "promhttpmetrics": false
+  },
+  "snapshots": {
+    "global": {
+      "index": 1050000,
+      "path": "snapshotMainnet.txt",
+      "spentaddressespaths": [
+        "previousEpochsSpentAddresses1.txt",
+        "previousEpochsSpentAddresses2.txt",
+        "previousEpochsSpentAddresses3.txt"
+      ]
+    },
+    "loadtype": "local",
+    "local": {
+      "depth": 50,
+      "downloadurls": [
+        "https://dbfiles.iota.org/mainnet/hornet/latest-export.bin",
+        "https://x-vps.com/export.bin"
+      ],
+      "intervalsynced": 50,
+      "intervalunsynced": 1000,
+      "path": "snapshots/mainnet/export.bin"
+    },
+    "pruning": {
+      "delay": 60480,
+      "enabled": true
+    }
+  },
+  "spammer": {
+    "address": "HORNET99INTEGRATED99SPAMMER999999999999999999999999999999999999999999999999999999",
+    "autostart": false,
+    "bundlesize": 1,
+    "cpumaxusage": 0.8,
+    "message": "Spamming with HORNET tipselect",
+    "tag": "HORNET99INTEGRATED99SPAMMER",
+    "tagsemilazy": "",
+    "tpsratelimit": 0,
+    "valuespam": false,
+    "workers": 0
+  },
+  "spentaddresses": {
+    "enabled": true
+  },
+  "tipsel": {
+    "belowmaxdepth": 15,
+    "maxdeltatxoldestrootsnapshotindextolsmi": 13,
+    "maxdeltatxyoungestrootsnapshotindextolsmi": 8,
+    "nonlazy": {
+      "maxapprovers": 2,
+      "maxreferencedtipageseconds": 3,
+      "retentionrulestipslimit": 100,
+      "spammertipsthreshold": 0
+    },
+    "semilazy": {
+      "maxapprovers": 2,
+      "maxreferencedtipageseconds": 3,
+      "retentionrulestipslimit": 20,
+      "spammertipsthreshold": 30
+    }
+  },
+  "useprofile": "auto",
+  "warpsync": {
+    "advancementrange": 50
+  },
+  "zmq": {
+    "bindaddress": "localhost:5556",
+    "protocol": "tcp"
+  }
+}
+peers []
+maxPeers [5]
+acceptAnyConnection [false]
+
+              ██╗  ██╗ ██████╗ ██████╗ ███╗   ██╗███████╗████████╗
+              ██║  ██║██╔═══██╗██╔══██╗████╗  ██║██╔════╝╚══██╔══╝
+              ███████║██║   ██║██████╔╝██╔██╗ ██║█████╗     ██║
+              ██╔══██║██║   ██║██╔══██╗██║╚██╗██║██╔══╝     ██║
+              ██║  ██║╚██████╔╝██║  ██║██║ ╚████║███████╗   ██║
+              ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝
+                                   v0.5.6-c9ec091
+
+
+2021-02-03T12:16:27-05:00	INFO	CLI	Update to 0.5.6 available on https://github.com/gohornet/hornet/releases/latest
+2021-02-03T12:16:27-05:00	INFO	CLI	Profile mode 'auto', Using profile '8gb'
+2021-02-03T12:16:27-05:00	INFO	CLI	Loading plugins ...
+2021-02-03T12:16:27-05:00	INFO	Node	Loading Plugin: CLI ... done
+2021-02-03T12:16:27-05:00	INFO	Node	Loading Plugin: Graceful Shutdown ... done
+2021-02-03T12:16:27-05:00	INFO	Node	Loading Plugin: Profiling ... done
+2021-02-03T12:16:27-05:00	INFO	Node	Loading Plugin: Database ... done
+2021-02-03T12:16:27-05:00	INFO	Node	Loading Plugin: Curl ... done
+2021-02-03T12:16:27-05:00	INFO	Local	Initialized local: peer://6TNAjHZvmxAS2ejJDXkqPMGZymPYuAaCmwcbnNY9oSWP@0.0.0.0:14626
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: Autopeering ... done
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: WebAPI ... done
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: PoW ... done
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: Gossip ... done
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: Tangle ... done
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: Peering ... done
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: WarpSync ... done
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: URTS ... done
+2021-02-03T12:16:33-05:00	INFO	Node	Loading Plugin: Metrics ... done
+2021-02-03T12:16:33-05:00	INFO	Snapshot	Downloading snapshot from one of the provided sources [https://dbfiles.iota.org/mainnet/hornet/latest-export.bin https://x-vps.com/export.bin]
+2021-02-03T12:16:33-05:00	INFO	Snapshot	Downloading snapshot from https://dbfiles.iota.org/mainnet/hornet/latest-export.bin
+Downloading... 710 MB/712 MB (1.4 MB/s)                     
+2021-02-03T12:25:51-05:00	INFO	Snapshot	Snapshot download finished
+2021-02-03T12:25:51-05:00	INFO	Snapshot	Loading snapshot file...
+SnapshotInfo:
+	CooAddr: UDYXTZBE9GZGPM9SSQV9LTZNDLJIZMPUVVXYXFYVBLIEUHLSEWFTKZZLXYRHHWVQV9MNNX9KZC9D9UZWZ
+	SnapshotIndex: 2982304 (CMNQDFGVGPYKOXBNHXMFDSF9RZVJTGJSSUVRQKXJDKFIGHEEHANJANQGXXODQFVAYAXEFCSQXXUJ99999)
+	EntryPointIndex: 2982304
+	PruningIndex: 2982304
+	Timestamp: 2021-02-03 10:25:19 -0500 EST
+	SpentAddressesEnabled: true
+2021-02-03T12:25:51-05:00	INFO	Snapshot	importing solid entry points
+2021-02-03T12:25:51-05:00	INFO	Snapshot	importing seen milestones
+2021-02-03T12:25:51-05:00	INFO	Snapshot	importing ledger state
+2021-02-03T12:26:14-05:00	INFO	Snapshot	importing 14078635 spent addresses. this can take a while...
