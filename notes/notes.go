@@ -13,19 +13,19 @@ https://github.com/iotaledger/wasp/blob/master/articles/intro/dwf.md
 ~~~~
 import variations
 	- aliased import
-	  import f "fmt" 
+	  import f "fmt"
 		  "f" can be used in place of fmt, ex:
 				f.Println("stuff")
   - dot import
-    import . "fmt" 
-			allows function all without package name, ex:
+    import . "fmt"
+			allows function call without package name, ex:
 				Println("stuff")
 	- blank import
 		import _ "fmt"
 			allows for ignoring unused imports
   - nested import
 		import "math/rand"
-			import subpackage of larger package			
+			import subpackage of larger package
 
 ~~~~
 
@@ -65,10 +65,10 @@ type keyword - https://golang.org/ref/spec#Type_definitions
 
 https://stackoverflow.com/questions/53689968/what-exactly-does-the-type-keyword-do-in-go
 
-type <new_type> <existing_type or type_definition>	
+type <new_type> <existing_type or type_definition>
 
 Create a type while defining struct.
-Format:	
+Format:
 	type <new_type> struct { /*...*/}
 
 function - does not belong to any struct type
@@ -81,7 +81,7 @@ function - does not belong to any struct type
 
 methods - methods belong to struct type as per OO
 
-	type post struct {  
+	type post struct {
 		title string
 	}
 
@@ -93,7 +93,7 @@ methods - methods belong to struct type as per OO
 	  fmt.Println("Title: ", p.title)
 	}
 
-	func main() {  
+	func main() {
 	  post1 := post{
 	    "Inheritance in Go",
 	  }
@@ -117,7 +117,7 @@ type post struct {
 }
 
 func (p post) details() {  // method works on class of type post
-  fmt.Println("Title: ", p.title)  
+  fmt.Println("Title: ", p.title)
   fmt.Println("Author: ", p.firstName) // works like inheritance
 }
 
@@ -137,11 +137,11 @@ func main() {
 
 pointers as parameters, simplest case
 	object is passed by reference(&) and inside the function dereferenced using *
- 
+
 func changeValue(num int, newnum int) {
   num = newnum
 }
- 
+
 func changeValueByRef(num *int, newnum int) { // pointer to int
   *num = newnum // pointer dereference
 }
@@ -161,11 +161,11 @@ pointers on class reference, next simplest case
 	methods on a class use receiver type of pointer
 
 package main
- 
+
 import (
   "fmt"
 )
- 
+
 type MyType struct {
   age string
 }
@@ -177,14 +177,14 @@ func (m *MyType) setMyTypeByRef(input string) {
 func (m MyType) setMyTypeByValue(input string) {
   m.age = input
 }
- 
+
 func main() {
   myType := MyType{"12"}
   fmt.Println(myType.age) // will be 12
   myType.setMyTypeByValue("13") // try set to 13
   fmt.Println(myType.age) // does not set to 13 as expected
   myType.setMyTypeByRef("13") // or (&myType).setMyType("13")
-  fmt.Println(myType.age) 
+  fmt.Println(myType.age)
 }
 
 ~~~~
@@ -201,16 +201,16 @@ func main() {
 	var m *myStruct
 	m = &myStruct{42}
 	fmt.Println(m.attr)
-	
+
 	// same as
-	
+
 	var n *myStruct
 	n = new(myStruct)
 	(*n).attr = 32
 	fmt.Println((*n).attr)
-	
+
 	// same as
-	
+
 	var o *myStruct
 	o = new(myStruct)
 	o.attr = 52
@@ -251,28 +251,28 @@ func main() {
 		"tx": 456,
 	}
 	fmt.Println(m)
-	
+
 	ma := make(map[int]int)
 	for i := 0; i <= 9; i++ {
 		ma[i] = i+10
 	}
 	fmt.Println(ma)
-	
+
 	fmt.Println(ma[0])
 	ma[10]=10
 	fmt.Println(ma)
-	fmt.Println(ma[10])	
-	
+	fmt.Println(ma[10])
+
 	na := make(map[int]string)
 	for i := 0; i <= 9; i++ {
 		na[i] = strconv.Itoa(i+10)
 	}
 	fmt.Println(na)
-		
+
 	delete(na, 0)
 	fmt.Println(na)
 	fmt.Println(0)
-	
+
 	_, ok := na[1]  // called "comma ok syntax" will check to see if existence
 	fmt.Println(ok) // can throw away "write only" variable
 }
