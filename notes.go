@@ -11,6 +11,16 @@ https://github.com/iotaledger/wasp/blob/develop/packages/vm/examples/donatewithf
 https://github.com/iotaledger/wasp/blob/master/articles/intro/dwf.md
 
 ~~~~
+
+go.mod use local src instead of import remote
+
+	require (
+		github.com/iotaledger/iota.go v1.0.0-beta.15
+	)
+
+	replace github.com/iotaledger/iota.go => /home/nick/go/src/github.com/avlo/iota.go
+~~~~
+
 import variations
 	- aliased import
 	  import f "fmt"
@@ -123,11 +133,13 @@ type author struct {
 
 type post struct {
   title     string
-  author
+  author	// inner struct with no name is an "anonymous field", aka "embedded"
 }
 
 func (p post) details() {  // method works on class of type post
   fmt.Println("Title: ", p.title)
+
+	// access fields of embedded struct as if they belong to the outer struct.
   fmt.Println("Author: ", p.firstName) // works like inheritance
 }
 

@@ -9,6 +9,7 @@ type Geometry interface {
 
 type square struct{}
 type triangle struct{}
+type circle struct{}
 
 func (s square) Area(base int, height int) int {
 	return base * height
@@ -25,6 +26,8 @@ func calcGeometry(g Geometry) int {
 func interfacesmain() {
 	s := square{}
 	t := triangle{}
+	c := circle{}
+	calcGeometry(c)
 	fmt.Println(calcGeometry(s))
 	fmt.Println(calcGeometry(t))
 }
