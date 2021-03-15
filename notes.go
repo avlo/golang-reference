@@ -127,10 +127,12 @@ methods - methods belong to struct type as per OO
 
 inheritance performed through composition
 
+// defined type
 type author struct {
   firstName string
 }
 
+// defined type
 type post struct {
   title     string
   author	// inner struct with no name is an "anonymous field", aka "embedded"
